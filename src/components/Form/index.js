@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addArticle } from '../../redux/actions/index'
+import { 
+  addArticle,
+  removeNames
+} from '../../redux/actions/index'
 
 function mapDispatchToProps(dispatch) {
   return {
-    addArticle: article => dispatch(addArticle(article))
+    addArticle: article => dispatch(addArticle(article)),
+    removeNames: name => dispatch(removeNames())
   };
 }
 
@@ -14,21 +18,28 @@ class ConnectedForm extends Component {
     this.state = {
       title: ""
     };
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
+
   handleChange = (event) => {
     this.setState({ [event.target.id]: event.target.value });
   }
+
   handleSubmit = (event) => {
     event.preventDefault();
     const { title } = this.state;
     this.props.addArticle({ title });
     this.setState({ title: "" });
   }
+
+  handleRemove = () => {
+    this.props.removeNames()
+  }
+
   render() {
     const { title } = this.state;
     return (
+      <div>
+
       <form onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="title">Title</label>
@@ -37,10 +48,14 @@ class ConnectedForm extends Component {
             id="title"
             value={title}
             onChange={this.handleChange}
-          />
+            />
         </div>
         <button type="submit">SAVE</button>
       </form>
+      <button onClick={this.handleRemove}>
+      clear
+      </button>
+            </div>
     );
   }
 }

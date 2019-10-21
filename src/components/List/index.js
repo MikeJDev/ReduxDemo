@@ -10,7 +10,7 @@ const ConnectedList = ({
 }) => {
   const data = articles.map((el, x) => {
     return (
-      <li key={x}>{el.title}</li>
+      <li key={x}> <label> <input type="checkbox"></input> {el.title} </label></li>
       )
   })
   return (

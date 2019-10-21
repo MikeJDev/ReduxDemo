@@ -1,1 +1,3 @@
-export const ADD_ARTICLE = "ADD_ARTICLE"
+export const ADD_TODO = "ADD_TODO"
+export const RESET_TODOS = "RESET_TODOS"
+export const REMOVE_SPECIFIC_TODO = 'REMOVE_SPECIFIC_TODO'

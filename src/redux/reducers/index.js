@@ -1,16 +1,33 @@
-import {ADD_ARTICLE} from '../action-types/index'
+import {
+  ADD_TODO,
+  RESET_TODOS,
+  REMOVE_SPECIFIC_TODO
+  } from '../action-types/index'
 
 const initialState = {
   articles: []
 }
 
 function rootReducer(state = initialState, action) {
-  if (action.type === ADD_ARTICLE) {
-    return Object.assign({}, state, {
-      articles: state.articles.concat(action.payload)
-    });
-  }
-  return state
+  switch (action.type) {
+    case ADD_TODO:
+      return Object.assign({}, state, {
+        articles: state.articles.concat(action.payload)
+      });
+
+    case REMOVE_SPECIFIC_TODO:
+      return {
+      }
+
+    case RESET_TODOS: 
+      return {
+        ...initialState
+      }
+      
+    default:
+      return state
+    }
 }
+
 
 export default rootReducer

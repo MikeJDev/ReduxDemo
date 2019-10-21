@@ -6,11 +6,15 @@ const mapStateToProps = state => ({
 })
 
 const ConnectedList = ({ 
-  articles 
+  articles,
+  remove 
 }) => {
+  console.log('articles:', articles)
+
   const data = articles.map((el, x) => {
+    const ID = x
     return (
-      <li key={x}> <label> <input type="checkbox"></input> {el.title} </label></li>
+      <li key={x}> <label> <input type="checkbox" id={ID} onClick={remove}></input> {el.title} </label></li>
       )
   })
   return (
@@ -21,6 +25,5 @@ const ConnectedList = ({
 }
 
 const List = connect(mapStateToProps) (ConnectedList)
-
 
 export default List

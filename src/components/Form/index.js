@@ -2,13 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { 
   addArticle,
-  removeNames
+  removeTodos,
+  removeSpecificTodo
 } from '../../redux/actions/index'
+
+import List from '../List'
 
 function mapDispatchToProps(dispatch) {
   return {
     addArticle: article => dispatch(addArticle(article)),
-    removeNames: name => dispatch(removeNames())
+    removeTodos: name => dispatch(removeTodos()),
+    removeSpecificTodo: id => dispatch(removeSpecificTodo(id))
   };
 }
 
@@ -32,30 +36,41 @@ class ConnectedForm extends Component {
   }
 
   handleRemove = () => {
-    this.props.removeNames()
+    this.props.removeTodos()
+  }
+
+  handleCheckBox = (event) => {
+    const id = event.target.id
+    console.log('id:', id)
+    this.props.removeSpecificTodo(id)
   }
 
   render() {
     const { title } = this.state;
     return (
       <div>
-
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={this.handleChange}
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={this.handleChange}
             />
+          </div>
+          <button type="submit">SAVE</button>
+        </form>
+          <button onClick={this.handleRemove}>
+            Clear all
+          </button>
+        <div>
+          <h2>Things I need to do</h2>
+          <List
+            remove={this.handleCheckBox}
+          ></List>
         </div>
-        <button type="submit">SAVE</button>
-      </form>
-      <button onClick={this.handleRemove}>
-      clear
-      </button>
-            </div>
+      </div>
     );
   }
 }

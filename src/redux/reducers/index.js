@@ -11,13 +11,21 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
+        console.log('state.articles add:', state.articles)
       return Object.assign({}, state, {
         articles: state.articles.concat(action.payload)
       });
 
     case REMOVE_SPECIFIC_TODO:
-      return {
-      }
+      let array = [...state.articles]
+        array.splice(action.payload, 1)
+      console.log('state.articles:', state.articles)
+      console.log('action.payload:', action.payload)
+
+      return Object.assign({}, state, {
+        ...state,
+        articles: array
+      })
 
     case RESET_TODOS: 
       return {

@@ -14,7 +14,7 @@ const ConnectedList = ({
   const data = completedTodos.map((el, x) => {
     const ID = x
     return (
-      <li className={styles.list} key={x}> <label> <input readOnly type="checkbox" checked={false} id={ID} onClick={remove}></input> {el.title} </label></li>
+      <li className={styles.list} key={x}> <label> <input readOnly type="checkbox" checked id={ID} onClick={remove}></input> {el.title} </label></li>
       )
   })
   return (

@@ -44,6 +44,7 @@ class ConnectedForm extends Component {
     const { title } = this.state;
     return (
       <div className={styles.container}>
+
         <div className={styles.addContainer}>
         <h2 className={styles.title}>To-Do List</h2>
         <form onSubmit={this.handleSubmit}>
@@ -63,8 +64,8 @@ class ConnectedForm extends Component {
             Clear
           </button>
           </div>
+
         <div>
-          {/* <h2 className={styles.things}>Things I need to do</h2> */}
           </div>
           <div>
             <ListContainer

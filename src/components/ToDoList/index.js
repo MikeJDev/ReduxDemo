@@ -3,18 +3,18 @@ import { connect } from 'react-redux'
 import styles from './style.module.css'
 
 const mapStateToProps = state => ({
-  toDo: state.articles
+  toDo: state.Todos
 })
 
 const ConnectedList = ({ 
   toDo,
-  remove 
+  complete 
 }) => {
 
   const data = toDo.map((el, x) => {
     const ID = x
     return (
-      <li className={styles.list} key={x}> <label> <input readOnly type="checkbox" checked={false} id={ID} onClick={remove}></input> {el.title} </label></li>
+      <li className={styles.list} key={x}> <label> <input readOnly type="checkbox" checked={false} id={ID} onClick={complete}></input> {el.title} </label></li>
       )
   })
   return (

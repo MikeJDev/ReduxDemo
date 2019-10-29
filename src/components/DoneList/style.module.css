@@ -1,0 +1,15 @@
+.list {
+  font-size: 20px;
+  text-align: left;
+  transition: all .2s ease-in-out; 
+  padding: 2px;
+}
+
+.list:hover {
+  transform: scale(1.05); 
+  background-color: #F5F5F5;
+}
+
+.ul {
+  list-style-type: none;
+}

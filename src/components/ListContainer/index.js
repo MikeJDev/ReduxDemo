@@ -6,20 +6,26 @@ import DoneList from '../DoneList'
 
 import { 
   removeSpecificTodo,
+  completeSpecificTodo
 } from '../../redux/actions/index'
 
 function mapDispatchToProps(dispatch) {
   return {
-    removeSpecificTodo: id => dispatch(removeSpecificTodo(id))
+    removeSpecificTodo: id => dispatch(removeSpecificTodo(id)),
+    completeSpecificTodo: id => dispatch(completeSpecificTodo(id))
   };
 }
 
 class ConnectedListContainer extends Component {
 
-  handleCheckBox = (event) => {
+  handleCheckBoxRemove = (event) => {
     const id = event.target.id
-    console.log('id:', id)
     this.props.removeSpecificTodo(id)
+  }
+
+  handleCheckBoxComplete = (event) => {
+    const id = event.target.id
+    this.props.completeSpecificTodo(id)
   }
 
   render() {
@@ -30,14 +36,16 @@ class ConnectedListContainer extends Component {
           <div className={styles.column}>
             <div className={styles.columnLeftTitle}> To Do
                 <ToDoList
-                  remove={this.handleCheckBox}
+                  complete={this.handleCheckBoxComplete}
                 ></ToDoList>
             </div>
           </div>
 
           <div className={styles.column}>
             <div className={styles.columnRightTitle}> Complete
-                <DoneList></DoneList>
+                <DoneList
+                  remove={this.handleCheckBoxRemove}
+                ></DoneList>
             </div>
           </div>
 

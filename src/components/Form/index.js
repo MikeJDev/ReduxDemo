@@ -2,17 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styles from './style.module.css'
 import ListContainer from '../ListContainer'
-    import { 
-      addTodo,
-      removeTodos,
-      removeSpecificTodo
-    } from '../../redux/actions/index'
+
+import { 
+    addTodo,
+    removeAllTodos,
+  } from '../../redux/actions/index'
 
 function mapDispatchToProps(dispatch) {
   return {
     addTodo: article => dispatch(addTodo(article)),
-    removeTodos: name => dispatch(removeTodos()),
-    removeSpecificTodo: id => dispatch(removeSpecificTodo(id))
+    removeAllTodos: name => dispatch(removeAllTodos()),
   };
 }
 
@@ -36,15 +35,9 @@ class ConnectedForm extends Component {
     }
     this.setState({ title: "" });
   }
-
+  
   handleRemove = () => {
-    this.props.removeTodos()
-  }
-
-  handleCheckBox = (event) => {
-    const id = event.target.id
-    console.log('id:', id)
-    this.props.removeSpecificTodo(id)
+    this.props.removeAllTodos()
   }
 
   render() {
@@ -52,10 +45,10 @@ class ConnectedForm extends Component {
     return (
       <div className={styles.container}>
         <div className={styles.addContainer}>
-        <h2 className={styles.title}>Add a new todo</h2>
+        <h2 className={styles.title}>To-Do List</h2>
         <form onSubmit={this.handleSubmit}>
           <span>
-            <label className={styles.label} htmlFor="title">To-Do </label>
+            <label className={styles.label} htmlFor="title">Add: </label>
             <input
               className={styles.inputBox}
               type="text"

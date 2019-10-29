@@ -4,13 +4,23 @@ import styles from './style.module.css'
 import ToDoList from '../ToDoList'
 import DoneList from '../DoneList'
 
+import { 
+  removeSpecificTodo,
+} from '../../redux/actions/index'
+
 function mapDispatchToProps(dispatch) {
   return {
-
+    removeSpecificTodo: id => dispatch(removeSpecificTodo(id))
   };
 }
 
 class ConnectedListContainer extends Component {
+
+  handleCheckBox = (event) => {
+    const id = event.target.id
+    console.log('id:', id)
+    this.props.removeSpecificTodo(id)
+  }
 
   render() {
     return (
@@ -18,8 +28,10 @@ class ConnectedListContainer extends Component {
         <div className={styles.row}>
 
           <div className={styles.column}>
-            <div className={styles.columnLeftTitle}> Things I need to do
-                <ToDoList></ToDoList>
+            <div className={styles.columnLeftTitle}> To Do
+                <ToDoList
+                  remove={this.handleCheckBox}
+                ></ToDoList>
             </div>
           </div>
 

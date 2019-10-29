@@ -8,7 +8,7 @@ export function addTodo(payload) {
   return { type: ADD_TODO, payload}
 }
 
-export function removeTodos(payload) {
+export function removeAllTodos(payload) {
   return { type: RESET_TODOS, payload}
 }
 

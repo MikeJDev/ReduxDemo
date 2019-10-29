@@ -19,7 +19,7 @@ const ConnectedList = ({
   })
   return (
   <ul className={styles.ul}>
-    {data}
+    {/* {data} */}
   </ul>
   )
 }

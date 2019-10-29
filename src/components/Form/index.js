@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styles from './style.module.css'
-import ToDoList from '../ToDoList'
+import ListContainer from '../ListContainer'
     import { 
       addTodo,
       removeTodos,
@@ -71,12 +71,12 @@ class ConnectedForm extends Component {
           </button>
           </div>
         <div>
-          <h2 className={styles.things}>Things I need to do</h2>
+          {/* <h2 className={styles.things}>Things I need to do</h2> */}
           </div>
           <div>
-            <ToDoList
+            <ListContainer
               remove={this.handleCheckBox}
-            ></ToDoList>
+            ></ListContainer>
           </div>
         </div>
     );

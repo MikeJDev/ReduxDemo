@@ -2,12 +2,35 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styles from './style.module.css'
 import ToDoList from '../ToDoList'
+import DoneList from '../DoneList'
 
-class ListContainer extends Component {
+function mapDispatchToProps(dispatch) {
+  return {
+
+  };
+}
+
+class ConnectedListContainer extends Component {
 
   render() {
     return (
-      <div></div>
+      <div className={styles.pageWrapper}>
+        <div className={styles.row}>
+
+          <div className={styles.column}>
+            <div className={styles.columnLeftTitle}> Things I need to do
+                <ToDoList></ToDoList>
+            </div>
+          </div>
+
+          <div className={styles.column}>
+            <div className={styles.columnRightTitle}> Complete
+                <DoneList></DoneList>
+            </div>
+          </div>
+
+        </div>
+      </div>
     );
   }
 }
@@ -15,6 +38,6 @@ class ListContainer extends Component {
 const ListContainer = connect(
   null,
   mapDispatchToProps
-)(ConnectedForm);
+)(ConnectedListContainer);
 
 export default ListContainer;

@@ -15,17 +15,11 @@
   border: 3px solid black;
   padding: 10px 60px 60px 60px;
   border-radius: 10px;
-  /* // backgroundColor: #d374ff */
-}
-
-.things {
-  text-align: center;
 }
 
 .submitButton {
   height: 26px;
   width: 62px;
-  /* font-family: Roboto, sans-serif; */
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;

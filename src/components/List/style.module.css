@@ -1,0 +1,12 @@
+.list {
+  font-size: 20px;
+  transition: all .2s ease-in-out; 
+}
+
+.list:hover {
+  transform: scale(1.02); 
+}
+
+.ul {
+  list-style-type: none;
+}

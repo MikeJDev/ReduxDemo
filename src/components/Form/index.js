@@ -5,7 +5,8 @@ import {
   removeTodos,
   removeSpecificTodo
 } from '../../redux/actions/index'
-import styles from '../Form/'
+
+import styles from './style.module.css'
 
 import List from '../List'
 
@@ -51,33 +52,39 @@ class ConnectedForm extends Component {
   render() {
     const { title } = this.state;
     return (
-      <div>
-        <h2 style={styles.title}>Add a new todo</h2>
+      <div className={styles.container}>
+        <div className={styles.addContainer}>
+        <h2 className={styles.title}>Add a new todo</h2>
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="title">Title</label>
+          <span>
+            <label className={styles.label} htmlFor="title">To-Do </label>
             <input
+              className={styles.inputBox}
               type="text"
               id="title"
               value={title}
               onChange={this.handleChange}
-            />
-          </div>
-          <button type="submit">SAVE</button>
+              />
+          </span>
+          <button className={styles.submitButton}type="submit">SAVE</button>
         </form>
-          <button onClick={this.handleRemove}>
-            Clear all
+          <button className={styles.submitButton} onClick={this.handleRemove}>
+            Clear
           </button>
+          </div>
         <div>
-          <h2>Things I need to do</h2>
-          <List
-            remove={this.handleCheckBox}
-          ></List>
+          <h2 className={styles.things}>Things I need to do</h2>
+          </div>
+          <div>
+            <List
+              remove={this.handleCheckBox}
+            ></List>
+          </div>
         </div>
-      </div>
     );
   }
 }
+
 const Form = connect(
   null,
   mapDispatchToProps

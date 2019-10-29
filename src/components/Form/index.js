@@ -5,6 +5,7 @@ import {
   removeTodos,
   removeSpecificTodo
 } from '../../redux/actions/index'
+import styles from '../Form/'
 
 import List from '../List'
 
@@ -51,6 +52,7 @@ class ConnectedForm extends Component {
     const { title } = this.state;
     return (
       <div>
+        <h2 style={styles.title}>Add a new todo</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="title">Title</label>

@@ -4,7 +4,7 @@ import {
   REMOVE_SPECIFIC_TODO
 } from '../action-types/index'
 
-export function addArticle(payload) {
+export function addTodo(payload) {
   return { type: ADD_TODO, payload}
 }
 

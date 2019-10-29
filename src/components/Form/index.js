@@ -1,18 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { 
-  addArticle,
-  removeTodos,
-  removeSpecificTodo
-} from '../../redux/actions/index'
-
 import styles from './style.module.css'
-
-import List from '../List'
+import ToDoList from '../ToDoList'
+    import { 
+      addTodo,
+      removeTodos,
+      removeSpecificTodo
+    } from '../../redux/actions/index'
 
 function mapDispatchToProps(dispatch) {
   return {
-    addArticle: article => dispatch(addArticle(article)),
+    addTodo: article => dispatch(addTodo(article)),
     removeTodos: name => dispatch(removeTodos()),
     removeSpecificTodo: id => dispatch(removeSpecificTodo(id))
   };
@@ -34,7 +32,7 @@ class ConnectedForm extends Component {
     event.preventDefault();
     const { title } = this.state;
     if (this.state.title !== "") {
-      this.props.addArticle({ title });
+      this.props.addTodo({ title });
     }
     this.setState({ title: "" });
   }
@@ -76,9 +74,9 @@ class ConnectedForm extends Component {
           <h2 className={styles.things}>Things I need to do</h2>
           </div>
           <div>
-            <List
+            <ToDoList
               remove={this.handleCheckBox}
-            ></List>
+            ></ToDoList>
           </div>
         </div>
     );

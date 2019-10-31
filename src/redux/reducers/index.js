@@ -14,6 +14,7 @@ function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_TODO:
       return Object.assign({}, state, {
+        ...state,
         Todos: state.Todos.concat(action.payload)
       });
 
